@@ -2,13 +2,17 @@ import sys
 
 import pygame
 
+from settings import Settings
+
 class AlienInvasion:
 	"""General class that runs resorses and the war of runing the game"""
 	def __init__(self):
 		"""begin the game and create resurses of it"""
 		pygame.init()
+		self.settings = Settings()
 
-		self.screen = pygame.display.set_mode((1200, 800))
+		self.screen = pygame.display.set_mode(
+			(self.settings.screen_width, self.settings.screen_height))
 		pygame.display.set_caption("Alien Invasion")
 
 		# set screen color
@@ -23,7 +27,7 @@ class AlienInvasion:
 					sys.exit()
 
 			#draw the screen again on every circle iteracion
-			self.screen.fill(self.bg_color)
+			self.screen.fill(self.settings.bg_color)
 
 			#Show the last drown screen
 			pygame.display.flip()
